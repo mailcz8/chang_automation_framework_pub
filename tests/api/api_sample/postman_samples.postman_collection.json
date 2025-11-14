@@ -1,0 +1,857 @@
+{
+	"info": {
+		"_postman_id": "50108094-0b4f-4657-88ab-2aed9bc1584f",
+		"name": "postman_samples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "910182"
+	},
+	"item": [
+		{
+			"name": "GET_call",
+			"item": [
+				{
+					"name": "get list of users",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// var authServiceUrl = pm.environment.get('TOKEN_URL');\r",
+									"// var cname = pm.environment.get('UNAME');\r",
+									"// var cpword = pm.environment.get('PWD_ENCRYPTED');\r",
+									"// var cID = pm.environment.get('CLIENT_ID');\r",
+									"// var cSECR = pm.environment.get('CLIENT_SECRET');\r",
+									"\r",
+									"// pm.sendRequest({\r",
+									"//     url: authServiceUrl+'/token',\r",
+									"//     method: 'POST',\r",
+									"// header: 'Content-Type:application/x-www-form-urlencoded',\r",
+									"//   body: {\r",
+									"//             mode: 'urlencoded',\r",
+									"//             urlencoded: [\r",
+									"//                     { key: \"client_id\", value: 'cID' },\r",
+									"//                     { key: \"clientSecret\", value: 'cSECR' },\r",
+									"//                     { key: \"username\", value: 'cname' },\r",
+									"//                     { key: \"password\", value: 'cpword' },\r",
+									"//             ]\r",
+									"//     }\r",
+									"// });\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{test_sample_url}}/api/users",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get 1 user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 200\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{test_sample_url}}/api/users/2",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get 1 user_not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"var expect_status = 404\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{test_sample_url}}/api/users/23",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get unknown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"var expect_status = 200\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{test_sample_url}}/api/unknown",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"unknown"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get unknown 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 200\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{test_sample_url}}/api/unknown/2",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"unknown",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// pm.globals.set('test_sample_url', 'https://restful-booker.herokuapp.com')",
+							"pm.globals.set('test_sample_url', 'https://reqres.in')"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Post call",
+			"item": [
+				{
+					"name": "Get create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"local_var = \"this is local var: \"\r",
+									"local_hw_var = 'Hello world...!!!'\r",
+									"console.log({local_var}, local_var + local_hw_var)\r",
+									"\r",
+									"var expect_status = 404\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"// pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"morpheus founder\",\r\n    \"job\": \"leader of no one\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/users",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "morpheus",
+									"disabled": true
+								},
+								{
+									"key": "job",
+									"value": "leader",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"local_var = \"this is local var: \"\r",
+									"local_hw_var = 'Hello world...!!!'\r",
+									"console.log({local_var}, local_var + local_hw_var)\r",
+									"\r",
+									"var expect_status = 201\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"morpheus founder\",\r\n    \"job\": \"leader of no one\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/users",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "morpheus",
+									"disabled": true
+								},
+								{
+									"key": "job",
+									"value": "leader",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put an user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"local_var = \"this is local var: \"\r",
+									"let local_hw_var = 'Hello world...!!!'\r",
+									"var expect_status = 404\r",
+									"\r",
+									"console.log({local_var}, local_var + local_hw_var)\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"morpheus change to morp\",\r\n    \"job\": \"leader of everyone\"\r\n}"
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/users",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "morpheusapplication/json",
+									"disabled": true
+								},
+								{
+									"key": "job",
+									"value": "leader",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post register_true",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 404\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"// pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/register",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post register_(negative)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// let jsonData = pm.response.json()\r",
+									"// console.log(jsonData)\r",
+									"\r",
+									"var expect_status = 404\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"// pm.test(\"Verify expected Status code = \"+expect_status, () => {\r",
+									"//     pm.expect(pm.response.code).to.eql(expect_status);\r",
+									"//     });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/register",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post login successful",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 404\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"// pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/login",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post login NOT successful",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 404\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"// pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/login",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "all other",
+			"item": [
+				{
+					"name": "delete an user_2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 204\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "html"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/users/2",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch an user_2 Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"morpheus delta patch\",\r\n    \"job\": \"zion resident with green card\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/api/users/2",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get delayed response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 200\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{test_sample_url}}/api/users?delay=2",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "delay",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1_demo_api_test",
+			"item": [
+				{
+					"name": "herokuapp.com_auth_1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 200\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"// pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/auth",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"auth"
+							]
+						},
+						"description": "curl -X POST \\\r\n  https://restful-booker.herokuapp.com/auth \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}'"
+					},
+					"response": []
+				},
+				{
+					"name": "herokuapp.com_auth_2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.set('test_sample_url', 'https://restful-booker.herokuapp.com')"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var expect_status = 200\r",
+									"var responseData = pm.response.json()\r",
+									"\r",
+									"// pm.response.to.have.status(expect_status)\r",
+									"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});\r",
+									"\r",
+									"pm.environment.set('this_token', responseData.token)\r",
+									"// pm.environment.set('pet_name', jsonData.pets[0].name)\r",
+									"// pm.environment.set('device_id', jsonData.pets[0].device.serial_number)\r",
+									"console.log(pm.environment.get('this_token'))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{test_sample_url}}/auth",
+							"host": [
+								"{{test_sample_url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test account create and 2fa",
+			"item": [
+				{
+					"name": "Get info",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const info_url1 = \"https://blog.testproject.io/2020/02/11/overcoming-api-testing-challenges-using-postman-one-time-password/\"\r",
+									"const info_url2 = \"https://blog.testproject.io/2020/02/11/overcoming-api-testing-challenges-using-postman-one-time-password/\"\r",
+									"const info_url3 = \"https://blog.testproject.io/2020/02/11/overcoming-api-testing-challenges-using-postman-one-time-password/\"\r",
+									"const info_url4 = \"https://blog.testproject.io/2020/02/11/overcoming-api-testing-challenges-using-postman-one-time-password/\"\r",
+									"const info_url5 = \"https://blog.testproject.io/2020/02/11/overcoming-api-testing-challenges-using-postman-one-time-password/\"\r",
+									"\r",
+									"let this_list = [info_url1, info_url2, info_url3, info_url4, info_url5]\r",
+									"\r",
+									"// for (let i=4; i<this_list.length; i++) {\r",
+									"//     console.log(i+1, this_list[i])\r",
+									"//     console.info(i+1, this_list[i])\r",
+									"//     console.warn(i+1, this_list[i])\r",
+									"//     console.error(i+1, this_list[i])\r",
+									"// }\r",
+									"\r",
+									"// let text = \"Res: \"\r",
+									"// for (let i = 0; i < 5; i++) {\r",
+									"//   text += \"The number is \" + i + \"<br>\";\r",
+									"//   console.log(text)\r",
+									"// }"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let expStatus = 404\r",
+									"\r",
+									"pm.test(\"Status code is \"+expStatus, function () {\r",
+									"    pm.response.to.have.status(expStatus);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.github.com/user/mailcz8",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"user",
+								"mailcz8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

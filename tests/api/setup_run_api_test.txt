@@ -1,0 +1,30 @@
+What do you need:
+* install postmant client
+* install newman cli
+
+How to install Newman(Work on both Windows and Mac):
+* Download and install Node.js.
+* Then in CLI:> npm install -g newman
+https://learning.postman.com/docs/collections/using-newman-cli/installing-running-newman/
+* Install newman reporter htmlextra>npm install -g newman-reporter-htmlextra
+
+How to run using newman:
+* open cmd, enter following commands:
+* run a script with specific environment, eg: dev, qa, prod
+cmd:>newman run sample_api.postman_collection.json
+* run a script with specific environment 3 times:
+cmd:>newman run sample_api.postman_collection.json -e api_qa_env_var.postman_environment.json -n 3
+* run newman output report in cli,htmlextra
+cmd:>newman run sample_api.postman_collection.json -r cli,htmlextra
+
+How to run newman with multi threads, for windows only:
+* open windows cmd
+* run file "run_x_threads.cmd" 
+Note 1: this will only run with 5 threads, to run 100, edit run_x_threads.cmd file and copy/poast same line 100 times
+Note 2: some TCs will failed, it's expected due to how the TCs flow is setup
+
+Ref to run newman with multi threads:
+* https://medium.com/@mnu/run-multiple-postman-collection-in-parallel-stress-ee20801922ed
+
+Notes:
+1. The postman/newman script does not work on UAT or Stage, because the setup company might be deleted.

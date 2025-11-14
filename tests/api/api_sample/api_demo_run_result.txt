@@ -1,0 +1,110 @@
+newman
+
+postman_samples
+
+□ GET_call
+└ get list of users
+  GET https://reqres.in/api/users [200 OK, 1.93kB, 88ms]
+
+└ get 1 user
+  GET https://reqres.in/api/users/2 [200 OK, 1.22kB, 28ms]
+  √  Verify expected Status code = 200
+
+└ get 1 user_not found
+  GET https://reqres.in/api/users/23 [404 Not Found, 897B, 319ms]
+  √  Verify expected Status code = 404
+
+└ get unknown
+  GET https://reqres.in/api/unknown [200 OK, 1.63kB, 19ms]
+  √  Verify expected Status code = 200
+
+└ get unknown 2
+  GET https://reqres.in/api/unknown/2 [200 OK, 1.15kB, 355ms]
+  √  Verify expected Status code = 200
+
+□ Post call
+└ Get create user
+  GET https://reqres.in/api/users [200 OK, 1.93kB, 18ms]
+  ┌
+  │ {
+  │   local_var: 'this is local var: '
+  │ }, 'this is local var: Hello world...!!!'
+  └
+
+└ post create user
+  POST https://reqres.in/api/users [201 Created, 945B, 331ms]
+  ┌
+  │ {
+  │   local_var: 'this is local var: '
+  │ }, 'this is local var: Hello world...!!!'
+  └
+  √  Verify expected Status code = 201
+
+└ put an user
+  PUT https://reqres.in/api/users [404 Not Found, 868B, 318ms]
+  ┌
+  │ {
+  │   local_var: 'this is local var: '
+  │ }, 'this is local var: Hello world...!!!'
+  └
+  √  Verify expected Status code = 404
+
+└ post register_true
+  POST https://reqres.in/api/register [200 OK, 881B, 388ms]
+
+└ post register_(negative)
+  POST https://reqres.in/api/register [400 Bad Request, 882B, 386ms]
+
+└ post login successful
+  POST https://reqres.in/api/login [200 OK, 874B, 324ms]
+
+└ post login NOT successful
+  POST https://reqres.in/api/login [400 Bad Request, 882B, 315ms]
+
+□ all other
+└ delete an user_2
+  DELETE https://reqres.in/api/users/2 [204 No Content, 804B, 341ms]
+  √  Verify expected Status code = 204
+
+└ patch an user_2 Copy
+  PATCH https://reqres.in/api/users/2 [200 OK, 975B, 332ms]
+
+└ get delayed response
+  GET https://reqres.in/api/users?delay=2 [200 OK, 1.86kB, 2.3s]
+  √  Verify expected Status code = 200
+
+□ 1_demo_api_test
+└ herokuapp.com_auth_1
+  POST https://reqres.in/auth [404 Not Found, 7.77kB, 349ms]
+
+└ herokuapp.com_auth_2
+  POST https://restful-booker.herokuapp.com/auth [200 OK, 792B, 326ms]
+  √  Verify expected Status code = 200
+  ┌
+  │ '8949c51c7a690b3'
+  └
+
+□ Test account create and 2fa
+└ Get info
+  GET https://api.github.com/user/mailcz8 [404 Not Found, 1.22kB, 214ms]
+  √  Status code is 404
+
+[90m┌─────────────────────────[39m[90m┬────────────────────[39m[90m┬───────────────────┐[39m
+[90m│[39m                         [90m│[39m           executed [90m│[39m            failed [90m│[39m
+[90m├─────────────────────────[39m[90m┼────────────────────[39m[90m┼───────────────────┤[39m
+[90m│[39m              iterations [90m│[39m                  1 [90m│[39m                 0 [90m│[39m
+[90m├─────────────────────────[39m[90m┼────────────────────[39m[90m┼───────────────────┤[39m
+[90m│[39m                requests [90m│[39m                 18 [90m│[39m                 0 [90m│[39m
+[90m├─────────────────────────[39m[90m┼────────────────────[39m[90m┼───────────────────┤[39m
+[90m│[39m            test-scripts [90m│[39m                 21 [90m│[39m                 0 [90m│[39m
+[90m├─────────────────────────[39m[90m┼────────────────────[39m[90m┼───────────────────┤[39m
+[90m│[39m      prerequest-scripts [90m│[39m                  8 [90m│[39m                 0 [90m│[39m
+[90m├─────────────────────────[39m[90m┼────────────────────[39m[90m┼───────────────────┤[39m
+[90m│[39m              assertions [90m│[39m                 10 [90m│[39m                 0 [90m│[39m
+[90m├─────────────────────────┴────────────────────┴───────────────────┤[39m
+[90m│[39m total run duration: 8.3s                                         [90m│[39m
+[90m├──────────────────────────────────────────────────────────────────┤[39m
+[90m│[39m total data received: 11.62kB (approx)                            [90m│[39m
+[90m├──────────────────────────────────────────────────────────────────┤[39m
+[90m│[39m average response time: 376ms [min: 18ms, max: 2.3s, s.d.: 488ms] [90m│[39m
+[90m└──────────────────────────────────────────────────────────────────┘[39m

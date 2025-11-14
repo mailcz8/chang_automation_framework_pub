@@ -1,0 +1,4 @@
+newman run postman_samples.postman_collection.json
+newman run postman_samples.postman_collection.json > api_demo_run_result.txt
+newman run postman_samples.postman_collection.json -r cli api_deom_run_report.txt
+newman run postman_samples.postman_collection.json -r cli,htmlextra --reporter-htmlextra-export api_deom_run_report.html
