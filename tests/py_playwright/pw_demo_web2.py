@@ -12,9 +12,20 @@ def run():
             time.sleep(3)
         browser.close()
 
+def run2(url=""):
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)  #Set healess=True if you don't want to too browser open
+        page = browser.new_page()
+        print("Open URL: ", url)
+        page.goto(url)
+        print("Page title:", page.title())
+        time.sleep(3)
+        browser.close()
+
 if __name__ == "__main__":
     try:
         run()
+        run2("https://the-internet.herokuapp.com/")
     except Exception as e:
         print(f"An error occurred during Playwright execution: {e}")
         print("Ensure you have run 'pip install playwright' and 'playwright install'")
