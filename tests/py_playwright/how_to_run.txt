@@ -1,0 +1,9 @@
+=== playwright 101 ===
+
+Install python env local:
+1. cd to the playwright directory, run:>python -m venv venvLocal1
+2. source local venv
+3. install playwright:>pip install playwright
+4. install playwright all browsers:>playwright install
+5. check pw version:>python -m playwright --version
+
